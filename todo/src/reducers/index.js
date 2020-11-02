@@ -6,7 +6,15 @@ const reducer = (state, action) =>{
             const newTodo = {item: action.payload, completed: false, id: new Date()};
             return({...state, list:[...state.list, newTodo]});
         case(SET_COMPLETED):
-            return({...state, });
+            console.log('complete')
+            const updatedList = state.list.map((item) => {
+                if(item.id === action.payload) {
+                    return {...item, completed: !item.completed};
+                } else {
+                    return item;
+                }
+            })
+            return({...state, list:updatedList});
         case(SET_CURRENT_TEXT):
             return({...state, currentText:action.payload})
         default:

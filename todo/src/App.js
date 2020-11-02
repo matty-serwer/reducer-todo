@@ -29,15 +29,12 @@ const App = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleToggleItem = () => {
-
+  const handleToggleItem = (id) => {
+    dispatch(setCompleted(id))
   }
 
   const handleAddItem = (task) => {
-    console.log(state.list)
     dispatch(setNewTodo(task));
-    console.log(state.list)
-    debugger
   }
 
   const handleChanges = (e) => {
