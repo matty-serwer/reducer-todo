@@ -33,9 +33,24 @@ const App = () => {
 
   }
 
+  const handleAddItem = (task) => {
+    console.log(state.list)
+    dispatch(setNewTodo(task));
+    console.log(state.list)
+    debugger
+  }
+
+  const handleChanges = (e) => {
+    dispatch(setCurrentText(e.target.value))
+  }
+
+  const handleClearTasks = () => {
+
+  }
+
   return(
     <div className='App'>
-      <TodoForm />
+      <TodoForm handleAddItem={handleAddItem} state={state} handleChanges={handleChanges} handleClearTasks={handleClearTasks}/>
       <TodoList todoList={state.list} handleToggleItem={handleToggleItem}/>
     </div>
 
