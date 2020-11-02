@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useReducer } from 'react';
+import reducer from './reducers';
+import { setNewTodo, setCompleted, setCurrentText } from './actions';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+
+  const testArray = [{
+    item: 'Learn about reducers',
+    completed: false,
+    id: 3892987589
+  },
+  {
+    item: 'Wash your face',
+    completed: false,
+    id: 3892987590
+  },
+  {
+    item: 'Eat Tamales',
+    completed: false,
+    id: 3892987591
+  }]
+
+  const initialState = {
+    list: testArray,
+    currentText: ''
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleToggleItem = () => {
+
+  }
+
+  return(
+    <div className='App'>
+      <TodoForm />
+      <TodoList todoList={state.list} handleToggleItem={handleToggleItem}/>
     </div>
-  );
-}
+
+)}
 
 export default App;
