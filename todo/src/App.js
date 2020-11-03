@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
+import './App.css'
 import reducer from './reducers';
-import { setNewTodo, setCompleted, setCurrentText } from './actions';
+import { setNewTodo, setCompleted, setCurrentText, setClear } from './actions';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
@@ -42,7 +43,7 @@ const App = () => {
   }
 
   const handleClearTasks = () => {
-
+    dispatch(setClear());
   }
 
   return(

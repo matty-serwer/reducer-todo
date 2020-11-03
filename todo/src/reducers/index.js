@@ -1,4 +1,4 @@
-import { SET_NEW_TODO, SET_COMPLETED, SET_CURRENT_TEXT } from './../actions';
+import { SET_CLEAR, SET_NEW_TODO, SET_COMPLETED, SET_CURRENT_TEXT } from './../actions';
 
 const reducer = (state, action) =>{
     switch(action.type) {
@@ -15,6 +15,11 @@ const reducer = (state, action) =>{
                 }
             })
             return({...state, list:updatedList});
+        case(SET_CLEAR):
+            const clearedList = state.list.filter((item) => {
+                return(!item.completed)
+            })
+            return({...state, list:clearedList});
         case(SET_CURRENT_TEXT):
             return({...state, currentText:action.payload})
         default:

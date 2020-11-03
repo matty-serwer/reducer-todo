@@ -14,10 +14,10 @@ const TodoForm = (props) => {
       setInput(e.target.value)
   }
 
-//   const handleClearTasks = (e) => {
-//     e.preventDefault();
-//     props.handleClearTasks();
-//   };
+  const handleClearTasks = (e) => {
+    e.preventDefault();
+    props.handleClearTasks();
+  };
 
   return (
     <div className='todo-form'>
@@ -31,7 +31,7 @@ const TodoForm = (props) => {
         <button className='submit'>Add</button>
       </form>
       <form>
-        <button className='clear' onClick={props.handleClearTasks}>
+        <button className='clear' onClick={handleClearTasks}>
           Clear
         </button>
       </form>
